@@ -58,7 +58,7 @@ def main():
         load_device(args.device_config)  # Reject missing/template identity before network or dependency setup.
     key = original_key(args.keystore, args.work)
     if args.command != 'check' and not args.test_key and not key.is_file():
-        raise ValueError('Original signing key missing. Extract the separate PRIVATE update kit into the repository. See docs/ARCH-LINUX.md.')
+        raise ValueError('Original signing key missing. Extract the separate PRIVATE update kit into the repository. See README.md.')
     if args.command == 'check':
         # Offline checks never install packages, download SDK, or contact a device.
         run([sys.executable, REPO/'scripts/check_repo.py'])
