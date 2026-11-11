@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">#0B0B10</item>
+        <item name="android:colorBackground">#16181D</item>
+        <item name="android:colorForeground">#C9CAD4</item>
+        <item name="android:textColorPrimary">#C9CAD4</item>
+        <item name="android:textColorSecondary">#7B8496</item>
+        <item name="android:textColorHighlight">#454157</item>
+        <item name="android:colorAccent">#AAA6C4</item>
+        <item name="android:colorControlNormal">#7B8496</item>
+        <item name="android:colorControlActivated">#AAA6C4</item>
+        <item name="android:colorControlHighlight">#454157</item>
+        <item name="android:colorButtonNormal">#16181D</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">#0B0B10</item>
+        <item name="android:navigationBarColor">#0B0B10</item>
+    </style>
+    <style name="AppThemeOLED" parent="AppTheme">
+        <item name="android:windowBackground">#000000</item>
+        <item name="android:colorBackground">#0B0B10</item>
+        <item name="android:colorButtonNormal">#0B0B10</item>
+        <item name="android:statusBarColor">#000000</item>
+        <item name="android:navigationBarColor">#000000</item>
+    </style>
+</resources>

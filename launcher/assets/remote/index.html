@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0B0B10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>_VeR0 · пульт</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/remote.css">
+  <script src="/remote.js" defer></script>
+</head>
+<body>
+  <main class="remote">
+    <header>
+      <a class="brand" href="/" aria-label="_VeR0, пульт">_VeR0</a>
+      <div id="connection" class="connection" data-state="wait" role="status"><i></i><span id="connection-text">подключение</span></div>
+    </header>
+    <div class="rule"></div>
+
+    <section id="pairing" class="pairing" hidden>
+      <p class="eyebrow">ПРОЕКТОР / ПОДКЛЮЧЕНИЕ</p>
+      <h1>Подключить<br>проектор.</h1>
+      <p class="intro">Введите код с экрана проектора.<br>Он находится в настройках _VeR0 → Веб-пульт.</p>
+      <form id="pair-form">
+        <label for="pin">Код подключения</label>
+        <input id="pin" name="pin" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="one-time-code" placeholder="······" required aria-describedby="pair-error">
+        <button class="pair-submit" id="pair-submit" type="submit">Подключить <span>↗</span></button>
+        <p id="pair-error" class="error" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="controls" class="controls" hidden aria-label="Пульт проектора" aria-busy="false">
+      <div class="section-line"><span class="eyebrow">ПРОЕКТОР / ПУЛЬТ</span><span class="hint">01</span></div>
+
+      <div class="shortcuts">
+        <button type="button" data-key="back" aria-label="Назад"><span class="glyph">↶</span><span>назад</span></button>
+        <button type="button" data-key="home" aria-label="Главная _VeR0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H4V10M9 20v-7h6v7"/></svg><span>главная</span></button>
+        <button type="button" data-key="menu" aria-label="Меню"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h14"/></svg><span>меню</span></button>
+        <button type="button" id="keyboard-toggle" aria-label="Открыть клавиатуру телефона" aria-expanded="false" aria-controls="keyboard-panel"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 15h10"/></svg><span>клавиатура</span></button>
+      </div>
+
+      <div id="keyboard-panel" class="keyboard-panel" hidden>
+        <form id="text-form">
+          <label for="remote-text">Выберите поле на проекторе и введите текст</label>
+          <input id="remote-text" name="text" type="text" inputmode="text" enterkeyhint="send" maxlength="256" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Текст для проектора" aria-describedby="text-message text-hint">
+          <div class="text-actions">
+            <button id="text-submit" type="submit">Ввести <span>↗</span></button>
+            <button type="button" data-key="delete" data-repeat aria-label="Удалить символ на проекторе">⌫</button>
+            <button type="button" data-key="enter" aria-label="Enter на проекторе">↵</button>
+          </div>
+        </form>
+        <p id="text-hint" class="text-hint">Латиница, цифры и знаки · до 256 символов</p>
+        <p id="text-message" class="text-message" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="dpad" role="group" aria-label="Навигация">
+        <button class="up" type="button" data-key="up" data-repeat aria-label="Вверх"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
+        <button class="left" type="button" data-key="left" data-repeat aria-label="Влево"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+        <button class="ok" type="button" data-key="ok" aria-label="OK, выбрать">OK</button>
+        <button class="right" type="button" data-key="right" data-repeat aria-label="Вправо"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+        <button class="down" type="button" data-key="down" data-repeat aria-label="Вниз"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 10 6 6 6-6"/></svg></button>
+        <span class="pad-mark top-left"></span><span class="pad-mark top-right"></span><span class="pad-mark bottom-left"></span><span class="pad-mark bottom-right"></span>
+      </div>
+
+      <div class="media" role="group" aria-label="Воспроизведение">
+        <button type="button" data-key="play_pause" class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 9 7-9 7V5ZM18 5v14"/></svg><span>пауза / пуск</span></button>
+        <button type="button" data-key="mute" aria-label="Выключить или включить звук"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5 5 9H2v6h3l5 4V5ZM16 9l6 6M22 9l-6 6"/></svg></button>
+      </div>
+
+      <div class="volume" role="group" aria-label="Громкость">
+        <button type="button" data-key="vol_down" data-repeat aria-label="Тише">−</button>
+        <span>громкость</span>
+        <button type="button" data-key="vol_up" data-repeat aria-label="Громче">+</button>
+      </div>
+      <p id="key-message" class="key-message" aria-live="polite">стрелки и Enter тоже работают</p>
+    </section>
+    <footer><span>меньше шума.</span><button id="theme-toggle" type="button" aria-label="Переключить тему">тема: лаванда</button><button id="disconnect" type="button" hidden>отключить телефон</button></footer>
+  </main>
+</body>
+</html>

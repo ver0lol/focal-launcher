@@ -1,0 +1,24 @@
+#!/bin/sh
+set -eu
+repo=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if ! command -v python3 >/dev/null 2>&1; then
+    case "${1:-}" in
+        build|update) ;;
+        *) echo 'Install Python 3.9+ first; offline checks do not install packages.' >&2; exit 1 ;;
+    esac
+    for argument in "$@"; do
+        if [ "$argument" = --no-system-install ]; then
+            echo 'Python missing; --no-system-install prevents bootstrap.' >&2
+            exit 1
+        fi
+    done
+    if [ -f /etc/arch-release ]; then
+        echo 'Python is required. Installing the official Arch python package.'
+        if [ "$(id -u)" = 0 ]; then pacman -S --needed python
+        else sudo pacman -S --needed python; fi
+    else
+        echo 'Install Python 3.9+ first.' >&2
+        exit 1
+    fi
+fi
+exec python3 "$repo/scripts/workflow.py" "$@"

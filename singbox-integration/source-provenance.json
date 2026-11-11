@@ -1,0 +1,13 @@
+{
+  "base_release": "https://github.com/SagerNet/sing-box/releases/tag/v1.14.4",
+  "base_apk": "SFA-1.14.4-armeabi-v7a.apk",
+  "base_apk_sha256": "b1ae76164e1f518c0ae343ce30d8ee63fbb46a59f1e12295bf5bd20f1e1a5e1b",
+  "android_source_commit": "f87c2ebdb7e34754be751bb5e58926db2fed8f8c",
+  "native_libraries_modified": false,
+  "added_code_license": "GPL-3.0-or-later",
+  "signing_certificate_sha256": "068bcd61ba49ffc0d8c5050fd45cc9aed39c22ca830bedab0f35b473c392a9e5",
+  "source_archives": {
+    "sfa-f87c2eb-source.tar.gz": "659a69cd897fad5d61de266e164fde13544344e959f59823eb8ecbecd87e4214",
+    "sing-box-1.14.4-source.tar.gz": "0958ccd23b1ea9a141d715d15478b1e040fd04bcca19d8ff5529636b1b753e18"
+  }
+}
